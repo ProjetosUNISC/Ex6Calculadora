@@ -182,6 +182,12 @@ public class FrmCalculadora extends JFrame {
         //ajusta eles e adiciona
         for (JButton botao : botoesCientificos) {
             botao.setFont(new Font("Arial", Font.BOLD, 24));
+            botao.addActionListener(e -> {
+                String operacao = ((JButton) e.getSource()).getText().toLowerCase();
+                double valor = Double.parseDouble(Valor.getText());
+                double resultado = calculo.calcular(operacao, valor);
+                Valor.setText(String.valueOf(resultado));
+            });
             painelCientifico.add(botao);
         }
 
@@ -202,7 +208,7 @@ public class FrmCalculadora extends JFrame {
 
 
 
-
+        this.pack();
         this.setVisible(true);
     }
 
